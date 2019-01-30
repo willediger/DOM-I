@@ -113,16 +113,6 @@ middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 
 
-// "contact": {
-//   "contact-h4" : "Contact",
-//   "address" : "123 Way 456 Street Somewhere, USA",
-//   "phone" : "1 (888) 888-8888",
-//   "email" : "sales@greatidea.io",
-// },
-// "footer": {
-//   "copyright" : "Copyright Great Idea! 2018"
-// },
-
 //grabbing the .contact <section>
 const contact = document.querySelector(".contact");
 
@@ -153,3 +143,8 @@ contactPTitles.forEach((e, i) => {
     contactPs[i].textContent = siteContent.contact[e];
   }
 });
+
+
+//setting content of footer
+const footer = document.querySelector('footer p');
+footer.textContent = siteContent.footer.copyright;
