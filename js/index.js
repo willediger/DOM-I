@@ -53,10 +53,10 @@ Object.entries(siteContent.nav)
   .forEach(e => navAContents.push(e[1]));
 
 //all a tags in the header nav
-const nav = document.querySelectorAll('header nav a');
+let navAs = document.querySelectorAll('header nav a');
 
 //set text for each a tag in header nav based on nav contents
-nav.forEach((e, i) => e.textContent = navAContents[i]);
+navAs.forEach((e, i) => e.textContent = navAContents[i]);
 
 
 
@@ -145,6 +145,32 @@ contactPTitles.forEach((e, i) => {
 });
 
 
+
 //setting content of footer
 const footer = document.querySelector('footer p');
 footer.textContent = siteContent.footer.copyright;
+
+
+
+//adding two elements to beginning and end of nav
+const nav = navAs[0].parentElement;
+
+//prepending 'Fun' nav item
+const before = document.createElement('a');
+before.textContent = 'Fun';
+before.setAttribute('href', '#');
+nav.prepend(before);
+
+//appending 'Cool' nav item
+const after = document.createElement('a');
+after.textContent = 'Cool';
+after.setAttribute('href', '#');
+nav.appendChild(after);
+
+
+
+//setting color of nav text to green
+//grabs all a's in nav, including ones that we've added later
+navAs = document.querySelectorAll('header nav a');
+//colors them all green
+navAs.forEach(e => e.style.color = 'green');
