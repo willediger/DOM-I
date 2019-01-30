@@ -37,9 +37,11 @@ const siteContent = {
   },
 };
 
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
 
 //grab contents of nav a link text into sorted array from siteContent
 const navAContents = [];
@@ -53,6 +55,7 @@ const nav = document.querySelectorAll('header nav a');
 
 //set text for each a tag in header nav based on nav contents
 nav.forEach((e, i) => e.textContent = navAContents[i]);
+
 
 //h1 tag inside cta. s/b only one h1 tag, but just to make sure we select the parent classes tree
 const h1 = document.querySelector('.cta .cta-text h1');
@@ -72,6 +75,7 @@ for (let i = 0; i < h1LineTextNodes.length; i++) {
   }
 }
 
+
 //button inside call to action
 const ctaButton = document.querySelector('.cta .cta-text button');
 
@@ -81,3 +85,23 @@ ctaButton.textContent = siteContent.cta.button;
 const ctaImg = document.querySelector('#cta-img');
 
 ctaImg.src = siteContent.cta["img-src"];
+
+
+//grab all h4's that are inside .main-content & .text-content tree
+const mainContentH4s = document.querySelectorAll('.main-content .text-content h4');
+
+mainContentH4s[0].textContent = siteContent["main-content"]["features-h4"];
+mainContentH4s[1].textContent = siteContent["main-content"]["about-h4"];
+mainContentH4s[2].textContent = siteContent["main-content"]["services-h4"];
+mainContentH4s[3].textContent = siteContent["main-content"]["product-h4"];
+mainContentH4s[4].textContent = siteContent["main-content"]["vision-h4"];
+
+
+//grab all p's that are inside .main-content & .text-content tree
+const mainContentPs = document.querySelectorAll('.main-content .text-content p');
+
+mainContentPs[0].textContent = siteContent["main-content"]["features-content"];
+mainContentPs[1].textContent = siteContent["main-content"]["about-content"];
+mainContentPs[2].textContent = siteContent["main-content"]["services-content"];
+mainContentPs[3].textContent = siteContent["main-content"]["product-content"];
+mainContentPs[4].textContent = siteContent["main-content"]["vision-content"];
