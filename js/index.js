@@ -57,10 +57,20 @@ nav.forEach((e, i) => e.textContent = navAContents[i]);
 //h1 tag inside cta. s/b only one h1 tag, but just to make sure we select the parent classes tree
 const h1 = document.querySelector('.cta .cta-text h1');
 
-//create html string to split the h1 into multiple lines with br's
-const h1Contents = siteContent.cta.h1.split(' ').join('<br>');
+// //create html string to split the h1 into multiple lines with br's
+const h1Contents = siteContent.cta.h1.split(' ')
 
-h1.innerHTML = h1Contents;
+//creating an array of textNodes for each line of text in h1
+const h1LineTextNodes = [];
+h1Contents.forEach(e => h1LineTextNodes.push(document.createTextNode(e)));
+
+//loops through h1LineTextNodes, appends the new line, and a br element after it, unless it's the last line.
+for (let i = 0; i < h1LineTextNodes.length; i++) {
+  h1.appendChild(h1LineTextNodes[i]);
+  if (i < h1LineTextNodes.length - 1) {
+    h1.appendChild(document.createElement('br'));
+  }
+}
 
 //button inside call to action
 const ctaButton = document.querySelector('.cta .cta-text button');
