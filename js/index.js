@@ -111,3 +111,45 @@ sectionTitles.forEach((e, i) => mainContentPs[i].textContent = siteContent["main
 const middleImg = document.querySelector("#middle-img");
 middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
+
+
+// "contact": {
+//   "contact-h4" : "Contact",
+//   "address" : "123 Way 456 Street Somewhere, USA",
+//   "phone" : "1 (888) 888-8888",
+//   "email" : "sales@greatidea.io",
+// },
+// "footer": {
+//   "copyright" : "Copyright Great Idea! 2018"
+// },
+
+//grabbing the .contact <section>
+const contact = document.querySelector(".contact");
+
+//selecting the h4 inside .contact and setting text
+contact.querySelector('h4').textContent = siteContent.contact["contact-h4"];
+
+const contactPTitles = ['address', 'phone', 'email'];
+
+//selecting the p's inside .contact
+const contactPs = contact.querySelectorAll('p');
+
+//looping through contactPTitles and setting contactPs content
+contactPTitles.forEach((e, i) => {
+  if (e === 'address') {
+    //split address lines into array
+    const street = 'Street'
+    let addrArr = siteContent.contact[e].split(`${street} `);
+    addrArr[0] += street;
+
+    //convert addrArr into arr of text nodes
+    addrArr = addrArr.map(el => document.createTextNode(el));
+
+    //append lines of address array separated by br
+    contactPs[i].appendChild(addrArr[0]);
+    contactPs[i].appendChild(document.createElement('br'));
+    contactPs[i].appendChild(addrArr[1]);
+  } else {
+    contactPs[i].textContent = siteContent.contact[e];
+  }
+});
