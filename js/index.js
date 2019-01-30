@@ -38,9 +38,11 @@ const siteContent = {
 };
 
 
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
 
 
 //grab contents of nav a link text into sorted array from siteContent
@@ -55,6 +57,7 @@ const nav = document.querySelectorAll('header nav a');
 
 //set text for each a tag in header nav based on nav contents
 nav.forEach((e, i) => e.textContent = navAContents[i]);
+
 
 
 //h1 tag inside cta. s/b only one h1 tag, but just to make sure we select the parent classes tree
@@ -76,6 +79,7 @@ for (let i = 0; i < h1LineTextNodes.length; i++) {
 }
 
 
+
 //button inside call to action
 const ctaButton = document.querySelector('.cta .cta-text button');
 
@@ -85,6 +89,8 @@ ctaButton.textContent = siteContent.cta.button;
 const ctaImg = document.querySelector('#cta-img');
 
 ctaImg.src = siteContent.cta["img-src"];
+
+
 
 //array with the names of the main content sections to use to loop through object and set content dynamically
 const sectionTitles = ['features', 'about', 'services', 'product', 'vision'];
@@ -98,3 +104,10 @@ sectionTitles.forEach((e, i) => mainContentH4s[i].textContent = siteContent["mai
 const mainContentPs = document.querySelectorAll('.main-content .text-content p');
 
 sectionTitles.forEach((e, i) => mainContentPs[i].textContent = siteContent["main-content"][`${e}-content`]);
+
+
+
+// Update the img src for the middle-img
+let middleImg = document.querySelector("#middle-img");
+middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
