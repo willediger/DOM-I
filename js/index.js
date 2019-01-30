@@ -53,3 +53,21 @@ const nav = document.querySelectorAll('header nav a');
 
 //set text for each a tag in header nav based on nav contents
 nav.forEach((e, i) => e.textContent = navAContents[i]);
+
+//h1 tag inside cta. s/b only one h1 tag, but just to make sure we select the parent classes tree
+const h1 = document.querySelector('.cta .cta-text h1');
+
+//create html string to split the h1 into multiple lines with br's
+const h1Contents = siteContent.cta.h1.split(' ').join('<br>');
+
+h1.innerHTML = h1Contents;
+
+//button inside call to action
+const ctaButton = document.querySelector('.cta .cta-text button');
+
+ctaButton.textContent = siteContent.cta.button;
+
+//img inside call to action
+const ctaImg = document.querySelector('#cta-img');
+
+ctaImg.src = siteContent.cta["img-src"];
