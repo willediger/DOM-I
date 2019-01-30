@@ -86,22 +86,15 @@ const ctaImg = document.querySelector('#cta-img');
 
 ctaImg.src = siteContent.cta["img-src"];
 
+//array with the names of the main content sections to use to loop through object and set content dynamically
+const sectionTitles = ['features', 'about', 'services', 'product', 'vision'];
 
 //grab all h4's that are inside .main-content & .text-content tree
 const mainContentH4s = document.querySelectorAll('.main-content .text-content h4');
 
-mainContentH4s[0].textContent = siteContent["main-content"]["features-h4"];
-mainContentH4s[1].textContent = siteContent["main-content"]["about-h4"];
-mainContentH4s[2].textContent = siteContent["main-content"]["services-h4"];
-mainContentH4s[3].textContent = siteContent["main-content"]["product-h4"];
-mainContentH4s[4].textContent = siteContent["main-content"]["vision-h4"];
-
+sectionTitles.forEach((e, i) => mainContentH4s[i].textContent = siteContent["main-content"][`${e}-h4`]);
 
 //grab all p's that are inside .main-content & .text-content tree
 const mainContentPs = document.querySelectorAll('.main-content .text-content p');
 
-mainContentPs[0].textContent = siteContent["main-content"]["features-content"];
-mainContentPs[1].textContent = siteContent["main-content"]["about-content"];
-mainContentPs[2].textContent = siteContent["main-content"]["services-content"];
-mainContentPs[3].textContent = siteContent["main-content"]["product-content"];
-mainContentPs[4].textContent = siteContent["main-content"]["vision-content"];
+sectionTitles.forEach((e, i) => mainContentPs[i].textContent = siteContent["main-content"][`${e}-content`]);
