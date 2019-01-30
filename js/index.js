@@ -39,4 +39,17 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+//grab contents of nav a link text into sorted array from siteContent
+const navAContents = [];
+Object.entries(siteContent.nav)
+  .filter(e => e[0].includes('nav-item'))
+  .sort((a, b) => a[0] - b[0])
+  .forEach(e => navAContents.push(e[1]));
+
+//all a tags in the header nav
+const nav = document.querySelectorAll('header nav a');
+
+//set text for each a tag in header nav based on nav contents
+nav.forEach((e, i) => e.textContent = navAContents[i]);
