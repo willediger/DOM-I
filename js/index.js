@@ -108,6 +108,6 @@ sectionTitles.forEach((e, i) => mainContentPs[i].textContent = siteContent["main
 
 
 // Update the img src for the middle-img
-let middleImg = document.querySelector("#middle-img");
+const middleImg = document.querySelector("#middle-img");
 middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
