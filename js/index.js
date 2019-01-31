@@ -49,7 +49,6 @@ logo.setAttribute('src', siteContent["nav"]["img-src"]);
 const navAContents = [];
 Object.entries(siteContent.nav)
   .filter(e => e[0].includes('nav-item'))
-  .sort((a, b) => a[0] - b[0])
   .forEach(e => navAContents.push(e[1]));
 
 //all a tags in the header nav
@@ -93,7 +92,7 @@ ctaImg.src = siteContent.cta["img-src"];
 
 
 //array with the names of the main content sections to use to loop through object and set content dynamically
-const sectionTitles = ['features', 'about', 'services', 'product', 'vision'];
+const sectionTitles = Object.entries(siteContent["main-content"]).filter(e => e[0].includes('h4')).map(e => e[0].substring(0, e[0].length-3));
 
 //grab all h4's that are inside .main-content & .text-content tree
 const mainContentH4s = document.querySelectorAll('.main-content .text-content h4');
