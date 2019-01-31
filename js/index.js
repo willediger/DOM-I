@@ -66,18 +66,18 @@ const h1 = document.querySelector('.cta .cta-text h1');
 // //create html string to split the h1 into multiple lines with br's
 const h1Contents = siteContent.cta.h1.split(' ')
 
-//creating an array of textNodes for each line of text in h1
-const h1LineTextNodes = [];
-h1Contents.forEach(e => h1LineTextNodes.push(document.createTextNode(e)));
-
-//loops through h1LineTextNodes, appends the new line, and a br element after it, unless it's the last line.
-for (let i = 0; i < h1LineTextNodes.length; i++) {
-  h1.appendChild(h1LineTextNodes[i]);
-  if (i < h1LineTextNodes.length - 1) {
-    h1.appendChild(document.createElement('br'));
+//loops through array of text lines that should be separated by <br>, and appends each line followed by a <br> except for the last line, which does not have a <br> after it.
+const appendTextArraySeparatedByBrs = (htmlElement, arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    htmlElement.appendChild(document.createTextNode(arr[i]));
+    if (i < arr.length - 1) {
+      htmlElement.appendChild(document.createElement('br'));
+    }
   }
 }
 
+//loops through h1LineTextNodes, appends the new line, and a br element after it, unless it's the last line.
+appendTextArraySeparatedByBrs(h1, h1Contents);
 
 
 //button inside call to action
@@ -132,13 +132,7 @@ contactPTitles.forEach((e, i) => {
     let addrArr = siteContent.contact[e].split(`${street} `);
     addrArr[0] += street;
 
-    //convert addrArr into arr of text nodes
-    addrArr = addrArr.map(el => document.createTextNode(el));
-
-    //append lines of address array separated by br
-    contactPs[i].appendChild(addrArr[0]);
-    contactPs[i].appendChild(document.createElement('br'));
-    contactPs[i].appendChild(addrArr[1]);
+    appendTextArraySeparatedByBrs(contactPs[i], addrArr);
   } else {
     contactPs[i].textContent = siteContent.contact[e];
   }
