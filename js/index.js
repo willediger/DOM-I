@@ -149,22 +149,18 @@ footer.textContent = siteContent.footer.copyright;
 const nav = navAs[0].parentElement;
 
 
-const addNavAnchor = (parentElement, textContent, location) => {
+const addNavAnchor = (parentElement, textContent, cbString) => {
   const newElement = document.createElement('a');
   newElement.textContent = textContent;
   newElement.setAttribute('href', '#');
-  if (location === 'before') {
-    parentElement.prepend(newElement)
-  } else {
-    parentElement.appendChild(newElement)
-  }
+  parentElement[cbString](newElement);
 }
 
 //prepending 'Fun' nav item
-addNavAnchor(nav, 'Fun', 'before');
+addNavAnchor(nav, 'Fun', 'prepend');
 
 //appending 'Cool' nav item
-addNavAnchor(nav, 'Cool', 'after');
+addNavAnchor(nav, 'Cool', 'appendChild');
 
 
 
