@@ -149,17 +149,23 @@ footer.textContent = siteContent.footer.copyright;
 //adding two elements to beginning and end of nav
 const nav = navAs[0].parentElement;
 
+
+const addNavAnchor = (parentElement, textContent, location) => {
+  const newElement = document.createElement('a');
+  newElement.textContent = textContent;
+  newElement.setAttribute('href', '#');
+  if (location === 'before') {
+    parentElement.prepend(newElement)
+  } else {
+    parentElement.appendChild(newElement)
+  }
+}
+
 //prepending 'Fun' nav item
-const before = document.createElement('a');
-before.textContent = 'Fun';
-before.setAttribute('href', '#');
-nav.prepend(before);
+addNavAnchor(nav, 'Fun', 'before');
 
 //appending 'Cool' nav item
-const after = document.createElement('a');
-after.textContent = 'Cool';
-after.setAttribute('href', '#');
-nav.appendChild(after);
+addNavAnchor(nav, 'Cool', 'after');
 
 
 
