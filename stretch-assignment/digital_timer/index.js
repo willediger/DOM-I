@@ -8,6 +8,7 @@ const limit = 10;
 const incrTime = () => time += increment;
 
 
+
 //grabs digit of base, where base = 10 for tens digit, 1 for ones digit, 0.1 for tenths decimal, 0.01 for hundredths decimal.
 const digit = (val, base) => {
   let prelim = Math.trunc(val / base);
@@ -18,6 +19,7 @@ const digit = (val, base) => {
   }
   return prelim;
 }
+
 
 
 // returns object of id names and values of digits to be set in html
@@ -34,6 +36,7 @@ const timeStrValues = (t) => {
 // console.log(JSON.stringify(test)); //{"secondTens":1,"secondOnes":5,"msHundreds":2,"msTens":6}
 
 
+
 //sets time values of each digit
 const setTimeValues = () => {
   const obj = timeStrValues(time);
@@ -47,11 +50,13 @@ const setTimeValues = () => {
 // const test2 = setTimeValues(test); // sets time to 15:26
 
 
+
 //sets digits of .digits class red
 const setDigitsRed = () => {
   const digitsDiv = document.querySelector('.digits');
   digitsDiv.classList.add('redDigit');
 }
+
 
 
 //while the timer hasn't hit the limit, it increments the time and sets the time.
@@ -62,7 +67,7 @@ const incrementAndSetTime = () => {
     setTimeValues();
   } else {
     setDigitsRed();
-    window.clearInterval(timerId);
+    window.clearInterval(timerId); //cancels the timer
   }
 }
 
